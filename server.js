@@ -14,3 +14,14 @@ app.listen(3000, () => {
 app.get("/", (req, res) => {
   res.status(200).render("index");
 });
+app.get("/about", (req, res) => {
+  res.status(200).render("about");
+});
+
+app.get("/data", (req, res) => {
+  const test = {
+    title: "Test",
+    items: ["one", "two", "three"]
+  };
+  res.status(200).render("data", { model: test });
+});
