@@ -25,3 +25,13 @@ app.get("/data", (req, res) => {
   };
   res.status(200).render("data", { model: test });
 });
+
+app.get("/books", (req, res) => {
+  const sql = "SELECT * FROM Books ORDER BY Title";
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    res.render("books", { model: rows });
+  });
+});
