@@ -36,6 +36,11 @@ app.get("/data", (req, res) => {
 
 app.get("/books", (req, res) => {
   const sql = "SELECT * FROM Books ORDER BY Title";
+  dbo.set_name();
+
+  dbo.getcon();
+  dbo.cr_tbl(dbo.dbcon);
+  dbo.seed_tbl(dbo.dbcon);
   dbo.dbcon.all(sql, [], (err, rows) => {
     if (err) {
       return console.error(err.message);
