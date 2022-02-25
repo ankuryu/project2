@@ -1,7 +1,15 @@
-const e = require("express");
+const dbo = require("./db.js");
+//const e = require("express");
 const express = require("express");
 const path = require("path");
+//console.log(dbo);
 
+dbo.set_name();
+
+dbo.getcon();
+dbo.cr_tbl(dbo.dbcon);
+dbo.seed_tbl(dbo.dbcon);
+//console.log(dbo);
 const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -28,7 +36,7 @@ app.get("/data", (req, res) => {
 
 app.get("/books", (req, res) => {
   const sql = "SELECT * FROM Books ORDER BY Title";
-  db.all(sql, [], (err, rows) => {
+  dbo.dbcon.all(sql, [], (err, rows) => {
     if (err) {
       return console.error(err.message);
     }
