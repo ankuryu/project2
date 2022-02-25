@@ -4,8 +4,8 @@ const sqlite3 = require("sqlite3").verbose();
 module.exports = {
   db_name: null,
   set_name: function () {
-    this.db_name = ":memory";
-    //path.join(__dirname, "data", "apptest.db");
+    //this.db_name = ":memory";
+    this.db_name = path.join(__dirname, "data", "apptest.db");
     console.log("DB Name", this.db_name);
   },
   dbcon: null,
